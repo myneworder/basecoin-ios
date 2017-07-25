@@ -16,18 +16,24 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.blue
         
         testFFI()
-        
-        let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        print(directory)
-        
-        let client = BindingsClient()
-        client.setDirectoryPath(directory[0])
+        testFS()
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func testFS() {
+        let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        print(directory)
+        
+        let client = BindingsNewClient()
+        client?.setDirectoryPath(directory[0])
+        
+        print(client?.directoryPath())
     }
     
     private func testFFI() {
